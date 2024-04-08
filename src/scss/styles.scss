@@ -9,6 +9,8 @@ $body-tertiary: #cedebd;
 body {
   background-color: $body-bg;
   font-family: 'Nunito Sans', sans-serif;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 h1 {
@@ -90,8 +92,10 @@ p {
     margin-left: 5px !important;
   }
 }
+
 .hero-element {
   position: relative !important;
+
   @media (min-width: 1200px) {
     width: 1000px;
     margin-left: auto;
@@ -123,4 +127,30 @@ p {
 
 .skip-link:focus {
   top: 0;
+}
+
+.placeholder {
+  text-align: center;
+  background-color: transparent !important;
+  font-weight: lighter;
+  color: rgba(0, 0, 0, 0.5);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.loading-indicator {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.loading-indicator i {
+  font-size: 24px;
+}
+
+.error-message {
+  text-align: center;
+  margin-top: 20px;
+  color: red;
 }

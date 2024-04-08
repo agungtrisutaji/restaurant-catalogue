@@ -1,9 +1,7 @@
-import '../components/list-resto.js'
+import '../components/list-resto';
 
-const main = () => {
-  const foodRandomElement = document.querySelector('list-resto')
-}
+const main = () => {};
 
-export default main
+export default main;
 
-document.addEventListener('DOMContentLoaded', main)
+document.addEventListener('DOMContentLoaded', main);

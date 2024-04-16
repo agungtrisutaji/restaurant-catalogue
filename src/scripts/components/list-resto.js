@@ -8,16 +8,23 @@ class ListResto extends HTMLElement {
 
   async fetchListResto() {
     try {
-      const response = await fetch(`${API_URL}/list`);
-      const data = await response.json();
-      const listResto = data.restaurants;
-      listResto.forEach((restaurant) => {
-        this.renderListResto(restaurant);
-      });
+      const listResto = await this.getListRestaurants();
+      this.renderRestaurants(listResto);
       this.removeLoading();
     } catch (error) {
       this.renderError('Failed to fetch list resto.');
     }
+  }
+
+  async getListRestaurants() {
+    const response = await fetch(`${API_URL}/list`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    return data.restaurants;
   }
 
   renderLoading() {
@@ -31,12 +38,26 @@ class ListResto extends HTMLElement {
     }
   }
 
-  renderListResto(restaurant) {
-    const truncatedDescription =
-      restaurant.description.length > 100
-        ? `${restaurant.description.substring(0, 100)}...`
-        : restaurant.description;
+  renderRestaurants(restaurants) {
+    restaurants.forEach((restaurant) => {
+      const truncatedDescription = this.truncateDescription(
+        restaurant.description
+      );
+      const restoCard = this.createRestaurantCard(
+        restaurant,
+        truncatedDescription
+      );
+      this.appendChild(restoCard);
+    });
+  }
 
+  truncateDescription(description) {
+    return description.length > 100
+      ? `${description.substring(0, 100)}...`
+      : description;
+  }
+
+  createRestaurantCard(restaurant, truncatedDescription) {
     const restoCard = document.createElement('div');
     restoCard.classList.add('col');
     restoCard.innerHTML = `
@@ -53,7 +74,7 @@ class ListResto extends HTMLElement {
           <a href="${API_URL}/detail/${restaurant.id}" class="card-link text-center py-1">See Detail</a>
       </div>
     `;
-    this.appendChild(restoCard);
+    return restoCard;
   }
 
   renderError(message) {

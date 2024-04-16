@@ -1,6 +1,6 @@
-const { merge } = require('webpack-merge')
-const common = require('./webpack.common')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { merge } = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -14,16 +14,16 @@ module.exports = merge(common, {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
-            }
-          }
-        ]
-      }
-    ]
+              presets: ['@babel/preset-env'],
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
-    })
-  ]
-})
+      filename: '[name].[contenthash].css',
+    }),
+  ],
+});

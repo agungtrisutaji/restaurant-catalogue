@@ -1,6 +1,12 @@
-import 'regenerator-runtime'; /* for async await transpile */
+import 'regenerator-runtime';
 import '../scss/styles.scss';
 
-import main from './view/main';
+import App from './view/app';
 
-document.addEventListener('DOMContentLoaded', main);
+require('./vendor');
+
+const app = new App({
+  button: document.querySelector('#hamburgerButton'),
+  drawer: document.querySelector('#navigationDrawer'),
+  content: document.querySelector('#mainContent'),
+});

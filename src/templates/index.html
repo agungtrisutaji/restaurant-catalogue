@@ -6,73 +6,37 @@
     <meta
       name="description"
       content="Yummie Katalog adalah platform pencarian restoran makanan yang sederhana dan mudah digunakan. Cari inspirasi untuk tempat makan Anda berikutnya dengan mudah menggunakan kata kunci yang Anda inginkan. Yummie Katalog didukung oleh teknologi modern untuk memberikan pengalaman pencarian yang cepat dan menyenangkan." />
-    <title>Yummie Katalog</title>
+    <link rel="icon" href="./favicon.png" />
+    <title>Yummie Catalogue</title>
   </head>
   <body>
     <a href="#maincontent" class="skip-link">Skip To Content</a>
-    <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand fs-2 ms-5 text-light" href="#"
-            ><strong>Yummie Katalog</strong></a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="offcanvas offcanvas-end"
-            tabindex="-1"
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title text-light" id="offcanvasNavbarLabel">
-                <strong>Yummie</strong>
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a
-                    class="nav-link active text-light"
-                    aria-current="page"
-                    href="#"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link text-light" href="#">Favorite</a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link text-light"
-                    target="_blank"
-                    href="https://github.com/agungtrisutaji"
-                    >About Us</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+    <header class="app-bar">
+      <div class="app-bar__menu">
+        <button id="hamburgerButton">☰</button>
+      </div>
+      <div class="app-bar__brand">
+        <h1>Yummie Catalogue</h1>
+      </div>
+      <nav id="navigationDrawer" class="app-bar__navigation">
+        <ul>
+          <li><a href="#/home">Home</a></li>
+          <li><a href="#/favourite">Favorite</a></li>
+          <li>
+            <a target="_blank" href="https://github.com/agungtrisutaji"
+              >About Us</a
+            >
+          </li>
+        </ul>
       </nav>
     </header>
 
     <main>
       <section
+        id="jumbotron"
         class="p-5 hero-element text-center bg-image rounded-3 mt-2"
         style="
-          background-image: url('./images/heros/hero-image_4.jpg');
+          background-image: url('./images/hero-image_4.jpg');
           height: 400px;
           background-size: cover;
           background-position: center;
@@ -91,7 +55,7 @@
 
       <hr />
 
-      <section class="container mt-5" id="maincontent">
+      <section class="container mt-5" id="mainContent">
         <div class="container">
           <h2>Katalog Restoran</h2>
           <div class="container-fluid">

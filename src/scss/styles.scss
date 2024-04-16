@@ -10,19 +10,116 @@ body {
   background-color: $body-bg;
   font-family: 'Nunito Sans', sans-serif;
   overflow: hidden;
+  min-height: 100vh;
   overflow-y: auto;
-}
-
-h1 {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
 p {
   margin: 0;
   text-align: center;
   font-size: 20px;
+}
+
+.app-bar {
+  padding: 8px 16px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    button {
+      background-color: transparent;
+      border: none;
+      font-size: 18px;
+      padding: 8px;
+      cursor: pointer;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    h1 {
+      color: #db0000;
+      text-transform: uppercase;
+      font-size: 22px;
+      user-select: none;
+      @media screen and (min-width: 800px) {
+        font-size: 2em;
+      }
+    }
+  }
+
+  &__navigation {
+    position: absolute;
+    top: 50px;
+    left: -180px;
+    width: 150px;
+    transition: all 0.3s;
+    padding: 8px;
+    background-color: white;
+    overflow: hidden;
+    &.open {
+      left: 0;
+    }
+  }
+
+  ul {
+    padding-left: 0; /* Hapus padding bawaan dari ul */
+    list-style-type: none; /* Hapus tanda pada setiap li */
+  }
+
+  li {
+    margin-bottom: 5px; /* Ganti margin-bottom dengan margin pada li */
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    padding: 8px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 650px) {
+    &__navigation {
+      min-height: 100vh;
+    }
+  }
+  @media screen and (min-width: 650px) {
+    grid-template-columns: 1fr auto;
+    padding: 8px 32px;
+
+    &__brand h1 {
+      font-size: 1.5em;
+    }
+
+    &__menu {
+      display: none;
+    }
+
+    &__navigation {
+      position: static;
+      width: 100%;
+    }
+
+    &__navigation ul li {
+      display: inline-block;
+      a {
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
 }
 
 .footer {
@@ -40,34 +137,16 @@ p {
   border-radius: 5px;
 }
 
-.navbar-toggler {
-  padding: 10px;
-  min-width: 44px;
-  min-height: 44px;
-  background-color: $body-secondary;
-}
-
-.nav-link {
-  padding: 10px;
-  min-width: 44px;
-  min-height: 44px;
-}
-
-.navbar,
-.offcanvas {
-  background-color: $body-primary !important;
-}
-
 .card {
-  background-color: $body-tertiary !important;
-  border-color: $body-secondary !important;
-  color: $body-primary !important;
+  background-color: $body-tertiary;
+  border-color: $body-secondary;
+  color: $body-primary;
 }
 
 .card-body {
-  background-color: $body-tertiary !important;
-  border-color: $body-secondary !important;
-  color: $body-primary !important;
+  background-color: $body-tertiary;
+  border-color: $body-secondary;
+  color: $body-primary;
 }
 
 .card-title {
@@ -82,19 +161,13 @@ p {
 
 .list-group-item {
   padding: 0;
-  background-color: $body-tertiary !important;
+  background-color: $body-tertiary;
   border: 0;
-  color: $body-primary !important;
-}
-
-@media screen and (max-width: 550px) {
-  .navbar-brand {
-    margin-left: 5px !important;
-  }
+  color: $body-primary;
 }
 
 .hero-element {
-  position: relative !important;
+  position: relative;
 
   @media (min-width: 1200px) {
     width: 1000px;
@@ -131,7 +204,7 @@ p {
 
 .placeholder {
   text-align: center;
-  background-color: transparent !important;
+  background-color: transparent;
   font-weight: lighter;
   color: rgba(0, 0, 0, 0.5);
   -webkit-user-select: none;
@@ -143,12 +216,10 @@ p {
 .loading-indicator {
   text-align: center;
   margin-top: 20px;
+  i {
+    font-size: 24px;
+  }
 }
-
-.loading-indicator i {
-  font-size: 24px;
-}
-
 .error-message {
   text-align: center;
   margin-top: 20px;

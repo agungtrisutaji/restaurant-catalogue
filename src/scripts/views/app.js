@@ -1,4 +1,3 @@
-import '../components/list-resto';
 import DrawerInitiator from '../utils/drawer-initiator';
 import UrlParser from '../routes/url-parser';
 import routes from '../routes/routes';

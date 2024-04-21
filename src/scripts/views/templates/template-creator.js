@@ -43,7 +43,7 @@ const renderRestaurantDetail = (restaurant) => {
               <ul>
                 <li><h4>Address: ${restaurant.address}</h4></li>
                 <li><h4>City: ${restaurant.city}</h4></li>
-                <li><h4>Rating: ${restaurant.rating}</h4></li>
+                <li><h4>Rating: ${restaurant.rating}⭐️</h4></li>
               </ul>
             </div>
             <div class="restaurant__overview">
@@ -70,7 +70,7 @@ const restaurantItem = (restaurant) => `
 }</p>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">City: ${restaurant.city}</li>
-      <li class="list-group-item">Rating: ${restaurant.rating}</li>
+      <li class="list-group-item">Rating: ${restaurant.rating}⭐️</li>
     </ul>
     </div>
     <a href="/#/detail/${

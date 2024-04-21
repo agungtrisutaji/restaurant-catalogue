@@ -5,7 +5,7 @@ const Home = {
   async render() {
     return `
     <div class="content">
-      <h2 class="content__heading">Now Playing in Cinema</h2>
+      <h2 class="content__heading">Handpicked Dining Destinations</h2>
       <div id="restaurants" class="row">
       </div>
     </div>
@@ -13,7 +13,7 @@ const Home = {
   },
 
   async afterRender() {
-    const restaurants = await RestaurantSource.home();
+    const restaurants = await RestaurantSource.listRetaurant();
     const restaurantsContainer = document.querySelector('#restaurants');
     restaurants.forEach((restaurant) => {
       restaurantsContainer.innerHTML += restaurantItem(restaurant);

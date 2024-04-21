@@ -4,9 +4,9 @@ import { restaurantItem } from '../templates/template-creator';
 const Favorite = {
   async render() {
     return `
-    <div class="content">
+    <div class="container">
       <h2 class="content__heading">Your Liked Restaurant</h2>
-      <div id="restaurants" class="restaurants">
+      <div id="restaurants" class="row">
  
       </div>
     </div>

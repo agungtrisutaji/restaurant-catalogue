@@ -4,7 +4,7 @@ import { restaurantItem } from '../templates/template-creator';
 const Home = {
   async render() {
     return `
-    <div class="content">
+    <div class="container">
       <h2 class="content__heading">Handpicked Dining Destinations</h2>
       <div id="restaurants" class="row">
       </div>

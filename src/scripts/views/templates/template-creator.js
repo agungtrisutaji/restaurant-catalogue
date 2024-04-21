@@ -62,7 +62,9 @@ const restaurantItem = (restaurant) => `
   <div class="card mx-auto mt-4" style="width: 18rem;">
   <img src="${
     CONFIG.BASE_IMAGE_URL + restaurant.pictureId
-  }" class="card-img-top" alt="${restaurant.name} thumbnail">
+  }" class="card-img-top" alt="${
+  restaurant.name
+} thumbnail" crossorigin="anonymous">
   <div class="card-body">
     <h5 class="card-title">${restaurant.name}</h5>
     <p class="card-text fs-6">${restaurant.description.slice(0, 200)}${
@@ -75,7 +77,7 @@ const restaurantItem = (restaurant) => `
     </div>
     <a href="/#/detail/${
       restaurant.id
-    }" class="card-link text-center py-1">See Detail</a>
+    }" class="card-link text-center p-3">See Detail</a>
   </div>
   </div>
 `;

@@ -46,7 +46,10 @@ p {
       color: white;
       border: none;
       font-size: 18px;
-      padding: 8px;
+      display: inline-block;
+      padding: 10px 20px;
+      min-width: 44px;
+      min-height: 44px;
       cursor: pointer;
     }
   }
@@ -90,9 +93,11 @@ p {
 
   a {
     display: inline-block;
+    padding: 10px 20px;
+    min-width: 44px;
+    min-height: 44px;
     text-decoration: none;
     color: white;
-    padding: 8px;
     width: 100%;
   }
 

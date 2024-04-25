@@ -22,9 +22,26 @@ const createCustomerReviews = (reviews) => {
       (review) => `<li>${review.name}: ${review.review} (${review.date})</li>`
     )
     .join('');
+  const reviewForm = `
+  <div class="review-form">
+  <h3>Add Review</h3>
+  <form id="addReviewForm">
+    <div class="form-group">
+      <label for="reviewerName">Your Name:</label>
+      <input type="text" id="reviewerName" name="reviewerName" required>
+    </div>
+    <div class="form-group">
+      <label for="reviewContent">Your Review:</label>
+      <textarea id="reviewContent" name="reviewContent" required></textarea>
+    </div>
+    <button type="submit">Submit Review</button>
+  </form>
+</div>
+  `;
   return `<div class="restaurant__reviews">
             <h3>Customer Reviews &#10025;</h3>
             <ul>${customerReviews}</ul>
+            ${reviewForm}
           </div>`;
 };
 
@@ -58,7 +75,7 @@ const renderRestaurantDetail = (restaurant) => {
 };
 
 const restaurantItem = (restaurant) => `
-  <div class="col">
+  <div class="col restaurants__item">
   <div class="card mx-auto mt-4" style="width: 18rem;">
   <img src="${
     CONFIG.BASE_IMAGE_URL + restaurant.pictureId
@@ -67,9 +84,7 @@ const restaurantItem = (restaurant) => `
 } thumbnail" crossorigin="anonymous">
   <div class="card-body">
     <h5 class="card-title">${restaurant.name}</h5>
-    <p class="card-text fs-6">${restaurant.description.slice(0, 200)}${
-  restaurant.description.length > 200 ? '...' : ''
-}</p>
+    <p class="card-text fs-6">${restaurant.description}</p>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">City: ${restaurant.city}</li>
       <li class="list-group-item">Rating: ${restaurant.rating}⭐️</li>
@@ -82,14 +97,14 @@ const restaurantItem = (restaurant) => `
   </div>
 `;
 
-const createLikeButtonTemplate = () => `
-  <button aria-label="like this movie" id="likeButton" class="like">
+const createLikeRestaurantButtonTemplate = () => `
+  <button aria-label="like this restaurant" id="likeButton" class="like">
      <i class="fa fa-heart-o" aria-hidden="true"></i>
   </button>
 `;
 
-const createLikedButtonTemplate = () => `
-  <button aria-label="unlike this movie" id="likeButton" class="like">
+const createUnlikeRestaurantButtonTemplate = () => `
+  <button aria-label="unlike this restaurant" id="likeButton" class="like">
     <i class="fa fa-heart" aria-hidden="true"></i>
   </button>
 `;
@@ -97,6 +112,7 @@ const createLikedButtonTemplate = () => `
 export {
   restaurantItem,
   renderRestaurantDetail,
-  createLikeButtonTemplate,
-  createLikedButtonTemplate,
+  createLikeRestaurantButtonTemplate,
+  createUnlikeRestaurantButtonTemplate,
+  createCustomerReviews,
 };

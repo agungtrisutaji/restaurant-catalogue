@@ -17,6 +17,7 @@ const Detail = {
     const restaurant = await RestaurantSource.detailRestaurant(url.id);
     const restaurantContainer = document.querySelector('#restaurant');
     restaurantContainer.innerHTML = renderRestaurantDetail(restaurant);
+
     LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
       restaurant: {
@@ -28,6 +29,25 @@ const Detail = {
         address: restaurant.address,
         rating: restaurant.rating,
       },
+    });
+
+    const addReviewForm = document.getElementById('addReviewForm');
+    addReviewForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const reviewerName = document.getElementById('reviewerName').value;
+      const reviewContent = document.getElementById('reviewContent').value;
+      const reviewData = {
+        id: restaurant.id,
+        name: reviewerName,
+        review: reviewContent,
+      };
+      try {
+        const response = await RestaurantSource.addReview(reviewData);
+        console.log('Review added:', response);
+        window.location.reload();
+      } catch (error) {
+        console.error('Failed to add review:', error);
+      }
     });
   },
 };

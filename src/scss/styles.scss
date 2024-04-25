@@ -135,6 +135,18 @@ p {
   }
 }
 
+.restaurants {
+  &__item {
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
+
 .restaurant {
   flex-direction: column;
   margin: 0 auto;
@@ -227,6 +239,39 @@ p {
       grid-column-start: 1;
       grid-column-end: 3;
     }
+  }
+}
+
+.review-form {
+  margin-top: 20px;
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type='text'],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 100px;
+  }
+
+  button[type='submit'] {
+    background-color: #db0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
   }
 }
 

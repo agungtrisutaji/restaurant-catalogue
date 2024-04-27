@@ -10,41 +10,31 @@ class ReviewRestaurantView {
     <ul id="customerReviews">
     
     </ul>
+    <div id="addReviewForm" class="review-form"></div>
     </div>
     `;
   }
 
   showCustomerReviews(reviews) {
-    let html;
+    let review;
     if (reviews.length) {
-      html = reviews.reduce(
+      review = reviews.reduce(
         (carry, restaurant) => carry.concat(listRetaurantReview(restaurant)),
         ''
       );
     } else {
-      html = this._getEmptyRestaurantTemplate();
+      review = this._getEmptyRestaurantTemplate();
     }
 
-    document.getElementById('customerReviews').innerHTML = html;
-
-    document
-      .getElementById('customerReviews')
-      .dispatchEvent(new Event('customerReviews:updated'));
+    document.getElementById('customerReviews').innerHTML = review;
   }
 
   _getEmptyRestaurantTemplate() {
     return `
-      <div class="restaurant-item__not__found">
+      <div>
         Tidak ada film untuk ditampilkan
       </div>
     `;
-  }
-
-  getAddReviewForm() {
-    return {
-      name: document.getElementById('reviewerName').value,
-      review: document.getElementById('reviewContent').value,
-    };
   }
 
   resetAddReviewForm() {

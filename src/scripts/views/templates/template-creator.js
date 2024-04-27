@@ -22,7 +22,6 @@ const listRetaurantReview = (review) => {
 
 const customerReviewForm = () => {
   return `
- <div class="review-form">
  <h3>Add Review</h3>
  <form id="addReviewForm">
    <div class="form-group">
@@ -35,7 +34,6 @@ const customerReviewForm = () => {
    </div>
    <button type="submit">Submit Review</button>
  </form>
- </div>
  `;
 };
 
@@ -106,4 +104,5 @@ export {
   createLikeRestaurantButtonTemplate,
   createUnlikeRestaurantButtonTemplate,
   listRetaurantReview,
+  customerReviewForm,
 };

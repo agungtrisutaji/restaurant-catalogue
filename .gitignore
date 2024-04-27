@@ -190,5 +190,4 @@ dist
 .pnp.*
 
 # temporary unnacessary file
-*\review-restaurant-add-presenter.js
 *\rep-detail.js

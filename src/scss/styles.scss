@@ -215,21 +215,6 @@ p {
     }
   }
 
-  &__reviews {
-    background-color: #f8f9fa;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    ul {
-      margin: 0;
-      padding: 10;
-      li {
-        margin-bottom: 8px;
-        color: #555;
-      }
-    }
-  }
-
   @media screen and (min-width: 650px) {
     &__title {
       grid-column-start: 1;
@@ -238,6 +223,29 @@ p {
     &__overview {
       grid-column-start: 1;
       grid-column-end: 3;
+    }
+  }
+}
+
+.restaurantReviews {
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px 16px;
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  ul {
+    margin: 0;
+    padding: 10;
+    li {
+      margin-bottom: 8px;
+      color: #555;
     }
   }
 }

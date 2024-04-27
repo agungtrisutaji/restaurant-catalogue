@@ -16,41 +16,34 @@ const createDrinkMenu = (drinks) => {
           </div>`;
 };
 
-const createCustomerReviews = (reviews) => {
-  const customerReviews = reviews
-    .map(
-      (review) => `<li>${review.name}: ${review.review} (${review.date})</li>`
-    )
-    .join('');
-  const reviewForm = `
-  <div class="review-form">
-  <h3>Add Review</h3>
-  <form id="addReviewForm">
-    <div class="form-group">
-      <label for="reviewerName">Your Name:</label>
-      <input type="text" id="reviewerName" name="reviewerName" required>
-    </div>
-    <div class="form-group">
-      <label for="reviewContent">Your Review:</label>
-      <textarea id="reviewContent" name="reviewContent" required></textarea>
-    </div>
-    <button type="submit">Submit Review</button>
-  </form>
-</div>
-  `;
-  return `<div class="restaurant__reviews">
-            <h3>Customer Reviews &#10025;</h3>
-            <ul>${customerReviews}</ul>
-            ${reviewForm}
-          </div>`;
+const listRetaurantReview = (review) => {
+  return `<li>${review.name}: ${review.review} (${review.date})</li>`;
+};
+
+const customerReviewForm = () => {
+  return `
+ <div class="review-form">
+ <h3>Add Review</h3>
+ <form id="addReviewForm">
+   <div class="form-group">
+     <label for="reviewerName">Your Name:</label>
+     <input type="text" id="reviewerName" name="reviewerName" required>
+   </div>
+   <div class="form-group">
+     <label for="reviewContent">Your Review:</label>
+     <textarea id="reviewContent" name="reviewContent" required></textarea>
+   </div>
+   <button type="submit">Submit Review</button>
+ </form>
+ </div>
+ `;
 };
 
 const renderRestaurantDetail = (restaurant) => {
   const foodMenu = createFoodMenu(restaurant.menus.foods);
   const drinkMenu = createDrinkMenu(restaurant.menus.drinks);
-  const customerReviews = createCustomerReviews(restaurant.customerReviews);
 
-  return `<div class="restaurant">
+  return `
             <h2 class="restaurant__title">${restaurant.name}</h2>
             <img class="restaurant__poster" src="${
               CONFIG.BASE_IMAGE_URL + restaurant.pictureId
@@ -69,8 +62,6 @@ const renderRestaurantDetail = (restaurant) => {
             </div>
             ${foodMenu}
             ${drinkMenu}
-            </div>
-            ${customerReviews}
           `;
 };
 
@@ -114,5 +105,5 @@ export {
   renderRestaurantDetail,
   createLikeRestaurantButtonTemplate,
   createUnlikeRestaurantButtonTemplate,
-  createCustomerReviews,
+  listRetaurantReview,
 };

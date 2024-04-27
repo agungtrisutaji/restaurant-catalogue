@@ -23,6 +23,9 @@ class RestaurantSource {
         body: JSON.stringify(reviewData),
       });
       const data = await response.json();
+      if (data.error) {
+        throw new Error(data.message);
+      }
       return data;
     } catch (error) {
       console.error('Failed to add review:', error);

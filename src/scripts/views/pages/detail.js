@@ -1,21 +1,23 @@
 import UrlParser from '../../routes/url-parser';
 import RestaurantSource from '../../data/restaurant-source';
 import { renderRestaurantDetail } from '../templates/template-creator';
+import ReviewRestaurantView from './review-restaurant/review-restaurant-view';
+import ReviewRestaurantShowPresenter from './review-restaurant/review-restaurant-show-presenter';
+import ReviewRestaurantAddPresenter from './review-restaurant/review-restaurant-add-presenter';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 
+const view = new ReviewRestaurantView();
+
 const Detail = {
   async render() {
-    return `
-    <div id="restaurant" class="restaurant"></div>
-    <div id="likeButtonContainer"></div>
-    `;
+    return view.getTemplate();
   },
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    console.log(url);
     const restaurant = await RestaurantSource.detailRestaurant(url.id);
+    const customerReviews = restaurant.customerReviews;
     const restaurantContainer = document.querySelector('#restaurant');
     restaurantContainer.innerHTML = renderRestaurantDetail(restaurant);
 
@@ -33,23 +35,15 @@ const Detail = {
       },
     });
 
-    const addReviewForm = document.getElementById('addReviewForm');
-    addReviewForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      const reviewerName = document.getElementById('reviewerName').value;
-      const reviewContent = document.getElementById('reviewContent').value;
-      const reviewData = {
-        id: restaurant.id,
-        name: reviewerName,
-        review: reviewContent,
-      };
-      try {
-        const response = await RestaurantSource.addReview(reviewData);
-        console.log('Review added:', response);
-        window.location.reload();
-      } catch (error) {
-        console.error('Failed to add review:', error);
-      }
+    new ReviewRestaurantShowPresenter({
+      view,
+      reviews: customerReviews,
+    });
+
+    new ReviewRestaurantAddPresenter({
+      view,
+      restaurant: RestaurantSource,
+      addReview: RestaurantSource.addReview,
     });
   },
 };

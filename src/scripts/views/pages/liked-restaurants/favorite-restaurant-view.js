@@ -4,19 +4,21 @@ class FavoriteRestaurantView {
   getTemplate() {
     return `
     <div class="container">
-    <input id="query" type="text">
+    <input id="queryTitle" type="text">
     <h2 class="content__heading">Your Liked Restaurant</h2>
     <div id="restaurants" class="row">
 
     </div>
-  </div>
+    </div>
     `;
   }
 
   runWhenUserIsSearching(callback) {
-    document.getElementById('query').addEventListener('change', (event) => {
-      callback(event.target.value);
-    });
+    document
+      .querySelector('#queryTitle')
+      .addEventListener('change', (event) => {
+        callback(event.target.value);
+      });
   }
 
   showFavoriteRestaurants(restaurants) {
@@ -40,7 +42,7 @@ class FavoriteRestaurantView {
   _getEmptyRestaurantTemplate() {
     return `
       <div class="restaurant-item__not__found">
-        Tidak ada film untuk ditampilkan
+      Tidak ada restoran untuk ditampilkan
       </div>
     `;
   }

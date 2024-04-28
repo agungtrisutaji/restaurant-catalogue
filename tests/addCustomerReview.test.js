@@ -3,6 +3,8 @@ import ReviewRestaurantAddPresenter from '../src/scripts/views/pages/review-rest
 import RestaurantSource from '../src/scripts/data/restaurant-source';
 
 describe('Add restaurant review', () => {
+  let alertSpy;
+
   beforeEach(() => {
     document.body.innerHTML = `
     <div id="restaurant" class="restaurant"></div>
@@ -27,6 +29,11 @@ describe('Add restaurant review', () => {
     </form></div>
     </div>
     `;
+    alertSpy = jest.spyOn(window, 'alert').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    alertSpy.mockRestore();
   });
 
   it('should ask the model to add review for restaurant', () => {
@@ -54,5 +61,36 @@ describe('Add restaurant review', () => {
       name: 'John Doe',
       review: 'resto a',
     });
+  });
+
+  it('should show error message when adding review fails', async () => {
+    const addReviewSpy = jest
+      .spyOn(RestaurantSource, 'addReview')
+      .mockRejectedValue(new Error('Failed to add review'));
+    const restaurant = { id: 'rqdv5juczeskfw1e867' };
+    const presenter = new ReviewRestaurantAddPresenter({
+      view: null,
+      restaurant,
+      restaurantSource: RestaurantSource,
+    });
+
+    const reviewerName = document.querySelector('#reviewerName');
+    reviewerName.value = 'John Doe';
+    const reviewContent = document.querySelector('#reviewContent');
+    reviewContent.value = 'resto a';
+    const addReviewForm = document.querySelector('#addReviewForm');
+    const submitEvent = new Event('submit');
+    addReviewForm.dispatchEvent(submitEvent);
+
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Menunggu async function selesai
+
+    expect(addReviewSpy).toHaveBeenCalledWith({
+      id: restaurant.id,
+      name: 'John Doe',
+      review: 'resto a',
+    });
+    expect(window.alert).toHaveBeenCalledWith(
+      'Failed to add review: Failed to add review'
+    );
   });
 });

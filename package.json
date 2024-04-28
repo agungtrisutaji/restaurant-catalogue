@@ -9,7 +9,8 @@
     "serve": "http-server dist",
     "test": "jest",
     "test:watch": "jest --watchAll",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "e2e": "codeceptjs run --steps"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "babel-jest": "^29.6.1",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
+    "codeceptjs": "^3.6.1",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.11.0",
     "eslint": "^7.32.0 || ^8.2.0",
@@ -34,6 +36,7 @@
     "jest-environment-jsdom": "^29.6.1",
     "jest-mock": "^29.7.0",
     "mini-css-extract-plugin": "^2.8.1",
+    "playwright": "^1.43.1",
     "postcss-loader": "^8.1.1",
     "sass": "^1.74.1",
     "sass-loader": "^14.1.1",

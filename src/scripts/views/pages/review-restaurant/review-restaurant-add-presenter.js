@@ -21,9 +21,9 @@ class ReviewRestaurantAddPresenter {
       try {
         const response = await this._restaurantSource.addReview(reviewData);
         console.log('Review added:', response);
+        this._showSuccessMessage();
         this._clearForm();
       } catch (error) {
-        console.error('Failed to add review:', error);
         this._showErrorMessage(error.message);
       }
     });

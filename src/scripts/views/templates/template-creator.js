@@ -72,16 +72,18 @@ const restaurantItem = (restaurant) => `
   restaurant.name
 } thumbnail" crossorigin="anonymous">
   <div class="card-body">
-    <h5 class="card-title">${restaurant.name}</h5>
+    <h5 class="card-title restaurant__title">${restaurant.name}</h5>
     <p class="card-text fs-6">${restaurant.description}</p>
     <ul class="list-group list-group-flush">
       <li class="list-group-item">City: ${restaurant.city}</li>
       <li class="list-group-item">Rating: ${restaurant.rating}⭐️</li>
     </ul>
     </div>
+    <div class="restaurant__link">
     <a href="/#/detail/${
       restaurant.id
     }" class="card-link text-center p-3">See Detail</a>
+  </div>
   </div>
   </div>
 `;

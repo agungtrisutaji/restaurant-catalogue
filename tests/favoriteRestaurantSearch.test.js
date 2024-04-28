@@ -6,7 +6,7 @@ describe('Searching restaurants', () => {
   beforeEach(() => {
     document.body.innerHTML = `
       <div id="restaurant-search-container">
-        <input id="query" type="text">
+        <input id="queryTitle" type="text">
         <div class="restaurant-result-container">
           <ul class="restaurants">
           </ul>
@@ -21,7 +21,7 @@ describe('Searching restaurants', () => {
       favoriteRestaurants: FavoriteRestaurantIdb,
     });
 
-    const queryElement = document.getElementById('query');
+    const queryElement = document.getElementById('queryTitle');
     queryElement.value = 'resto a';
 
     queryElement.dispatchEvent(new Event('change'));
@@ -32,7 +32,7 @@ describe('Searching restaurants', () => {
   it('should ask the model to search for liked restaurants', () => {
     spyOn(FavoriteRestaurantIdb, 'searchRestaurants');
 
-    const queryElement = document.getElementById('query');
+    const queryElement = document.getElementById('queryTitle');
     queryElement.value = 'resto a';
 
     queryElement.dispatchEvent(new Event('change'));

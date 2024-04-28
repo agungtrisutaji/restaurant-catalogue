@@ -30,16 +30,16 @@ class ReviewRestaurantView {
         ''
       );
     } else {
-      review = this._getEmptyRestaurantTemplate();
+      review = this._getEmptyReviewTemplate();
     }
 
     document.getElementById('customerReviews').innerHTML = review;
   }
 
-  _getEmptyRestaurantTemplate() {
+  _getEmptyReviewTemplate() {
     return `
-      <div>
-        Tidak ada film untuk ditampilkan
+      <div class="review-item__not__found">
+        Tidak ada review untuk ditampilkan
       </div>
     `;
   }

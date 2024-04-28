@@ -1,4 +1,7 @@
-import { listRetaurantReview } from '../../templates/template-creator';
+import {
+  listRetaurantReview,
+  customerReviewForm,
+} from '../../templates/template-creator';
 
 class ReviewRestaurantView {
   getTemplate() {
@@ -10,9 +13,13 @@ class ReviewRestaurantView {
     <ul id="customerReviews">
     
     </ul>
-    <div id="addReviewForm" class="review-form"></div>
+    <div id="addReviewFormContainer" class="review-form"></div>
     </div>
     `;
+  }
+
+  showAddReviewForm() {
+    return customerReviewForm();
   }
 
   showCustomerReviews(reviews) {

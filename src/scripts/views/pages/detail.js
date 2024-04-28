@@ -20,11 +20,12 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantSource.detailRestaurant(url.id);
-    const customerReviews = restaurant.customerReviews;
     const restaurantContainer = document.querySelector('#restaurant');
     restaurantContainer.innerHTML = renderRestaurantDetail(restaurant);
-    const addReviewForm = document.getElementById('addReviewForm');
-    addReviewForm.innerHTML = customerReviewForm();
+    const addReviewFormContainer = document.getElementById(
+      'addReviewFormContainer'
+    );
+    addReviewFormContainer.innerHTML = customerReviewForm();
 
     LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
@@ -42,12 +43,14 @@ const Detail = {
 
     new ReviewRestaurantShowPresenter({
       view,
-      reviews: customerReviews,
+      restaurant: restaurant,
+      restaurantSource: RestaurantSource,
     });
 
     new ReviewRestaurantAddPresenter({
       view,
       restaurant: restaurant,
+      restaurantSource: RestaurantSource,
     });
   },
 };

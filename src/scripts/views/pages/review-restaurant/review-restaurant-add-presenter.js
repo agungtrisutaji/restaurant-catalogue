@@ -1,8 +1,8 @@
-import RestaurantSource from '../../../data/restaurant-source';
-
 class ReviewRestaurantAddPresenter {
-  constructor({ restaurant }) {
+  constructor({ view, restaurant, restaurantSource }) {
+    this._view = view;
     this._restaurant = restaurant;
+    this._restaurantSource = restaurantSource;
 
     this._handleSubmitAddReviewForm();
   }
@@ -19,9 +19,8 @@ class ReviewRestaurantAddPresenter {
         review: reviewContent,
       };
       try {
-        const response = await RestaurantSource.addReview(reviewData);
+        const response = await this._restaurantSource.addReview(reviewData);
         console.log('Review added:', response);
-        this._showSuccessMessage();
         this._clearForm();
       } catch (error) {
         console.error('Failed to add review:', error);

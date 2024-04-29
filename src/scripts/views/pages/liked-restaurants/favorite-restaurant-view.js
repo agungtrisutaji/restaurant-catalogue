@@ -4,7 +4,7 @@ class FavoriteRestaurantView {
   getTemplate() {
     return `
     <div class="container">
-    <input id="queryTitle" type="text">
+    <input id="query" type="text">
     <h2 class="content__heading">Your Liked Restaurant</h2>
     <div id="restaurants" class="row">
 
@@ -14,11 +14,9 @@ class FavoriteRestaurantView {
   }
 
   runWhenUserIsSearching(callback) {
-    document
-      .querySelector('#queryTitle')
-      .addEventListener('change', (event) => {
-        callback(event.target.value);
-      });
+    document.querySelector('#query').addEventListener('change', (event) => {
+      callback(event.target.value);
+    });
   }
 
   showFavoriteRestaurants(restaurants) {

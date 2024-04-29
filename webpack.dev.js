@@ -1,13 +1,14 @@
-const { merge } = require('webpack-merge');
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const common = require('./webpack.common');
+const { merge } = require("webpack-merge");
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const common = require("./webpack.common");
 
 module.exports = merge(common, {
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: "development",
+  devtool: "inline-source-map",
   devServer: {
-    static: path.resolve(__dirname, 'dist'),
+    static: path.resolve(__dirname, "dist"),
     open: true,
     port: 8000,
     client: {
@@ -18,5 +19,5 @@ module.exports = merge(common, {
     },
     compress: true,
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [new MiniCssExtractPlugin(), new CleanWebpackPlugin()],
 });

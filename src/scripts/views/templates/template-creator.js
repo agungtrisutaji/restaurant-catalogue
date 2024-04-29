@@ -1,7 +1,7 @@
-import CONFIG from '../../globals/config';
+import CONFIG from "../../globals/config";
 
 const createFoodMenu = (foods) => {
-  const foodMenu = foods.map((food) => `<li>${food.name}</li>`).join('');
+  const foodMenu = foods.map((food) => `<li>${food.name}</li>`).join("");
   return `<div class="restaurant__foods">
             <h3>Food Menu</h3>
             <ul>${foodMenu}</ul>
@@ -9,7 +9,7 @@ const createFoodMenu = (foods) => {
 };
 
 const createDrinkMenu = (drinks) => {
-  const drinkMenu = drinks.map((drink) => `<li>${drink.name}</li>`).join('');
+  const drinkMenu = drinks.map((drink) => `<li>${drink.name}</li>`).join("");
   return `<div class="restaurant__drinks">
             <h3>Drink Menu</h3>
             <ul>${drinkMenu}</ul>
@@ -68,7 +68,7 @@ const restaurantItem = (restaurant) => `
   <div class="card mx-auto mt-4" style="width: 18rem;">
   <img src="${
     CONFIG.BASE_IMAGE_URL + restaurant.pictureId
-  }" class="card-img-top" alt="${
+  }" class="lazyload card-img-top" alt="${
   restaurant.name
 } thumbnail" crossorigin="anonymous">
   <div class="card-body">

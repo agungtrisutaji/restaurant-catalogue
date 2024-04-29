@@ -5,7 +5,7 @@ Before(({ I }) => {
   I.amOnPage('/#/favourite');
 });
 Scenario('showing empty liked restaurants', ({ I }) => {
-  I.seeElement('#queryTitle');
+  I.seeElement('#query');
   I.see('Tidak ada restoran untuk ditampilkan', '.restaurant-item__not__found');
 });
 
@@ -47,7 +47,7 @@ Scenario('searching restaurants', async ({ I }) => {
   }
 
   I.amOnPage('/#/favourite');
-  I.seeElement('#queryTitle');
+  I.seeElement('#query');
 
   const visibleLikedRestaurants = await I.grabNumberOfVisibleElements(
     '.restaurants__item'
@@ -55,7 +55,7 @@ Scenario('searching restaurants', async ({ I }) => {
   assert.strictEqual(titles.length, visibleLikedRestaurants);
 
   const searchQuery = titles[1].substring(1, 3);
-  I.fillField('#queryTitle', searchQuery);
+  I.fillField('#query', searchQuery);
   I.pressKey('Enter');
   // mendapatkan daftar film yang sesuai dengan searchQuery
   const matchingRestaurants = titles.filter(
